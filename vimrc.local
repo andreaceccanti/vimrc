@@ -1,0 +1,36 @@
+set clipboard=unnamed
+set shiftwidth=2                " Use indents of 4 spaces
+set tabstop=2                   " An indentation every four columns
+set softtabstop=2               " Let backspace delete indent
+set expandtab                   " Tabs are spaces, not tabs
+set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
+set splitright                  " Puts new vsplit windows to the right of the current
+set splitbelow                  " Puts new split windows to the bottom of the current
+set nohlsearch
+
+" This still doesn't work for me, bot ok
+let g:airline_poweline_fonts = 1
+
+let g:textobj#quote#educate = 0
+
+" No sytastic on Java files please
+let g:syntastic_mode_map = { 'mode': 'active',
+                           \ 'active_filetypes': ['c', 'c++', 'python'],
+                           \ 'passive_filetypes': ['java'] }
+
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+
+set cino=N-s " Tells c++ indentation not to indent namespaces
+
+" Opens QuickFix window after make
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+
+autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
+
+" Toggle auto formatting:
+nmap <Leader>C :ClangFormatAutoToggle<CR>
+
+set noautochdir

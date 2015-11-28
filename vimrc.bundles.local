@@ -1,0 +1,5 @@
+Plugin 'beloglazov/vim-online-thesaurus'
+Plugin 'rodjek/vim-puppet'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'rhysd/vim-clang-format'
+Plugin 'rdnetto/YCM-Generator'
